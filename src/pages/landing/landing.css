@@ -1,0 +1,55 @@
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  justify-content: space-around;
+  background-color: #f7f7f7;
+  font-size: 18px;
+}
+
+.mebook-landing-content {
+  display: flex;
+  width: 300px;
+  border: 1px solid;
+  /* background-color: white; */
+  justify-content: space-around;
+  height: 400px;
+  width: 500px;
+  border: none;
+}
+
+.mebook-landing-content .about-mebook {
+  text-transform: uppercase;
+}
+
+.about-mebook .highlight-text {
+  font-size: x-large;
+  font-weight: 700;
+  color: #9a9a9a;
+}
+
+.join-button {
+  width: 100%;
+  height: 3rem;
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #2979ff;
+  border: none;
+  font-weight: 700;
+}
+
+.join-button:hover,
+.already-account-container:hover {
+  cursor: pointer;
+}
+.already-account-container {
+  margin-top: 30px;
+  text-align: center;
+  color: #2979ff;
+}
+.mebook-landing-image {
+  height: 400px;
+  width: 500px;
+}

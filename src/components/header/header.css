@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  border-bottom: 0.5px solid;
+  width: 100%;
+  position: relative;
+  margin-right: 50px;
+  top: 0;
+  grid-area: header;
+  padding: 1.2rem;
+  background-color: #ffffff;
+  justify-content: space-between;
+}
+
+.bi-box-arrow-right {
+  font-size: 20px;
+  cursor: pointer;
+}

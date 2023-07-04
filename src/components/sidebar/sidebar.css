@@ -1,0 +1,72 @@
+.sidebar {
+  grid-area: sidebar;
+  border: 1px solid;
+  height: max-content;
+  margin-top: 4rem;
+  margin-right: 4rem;
+}
+
+.search-bar {
+  display: flex;
+  border: 1px solid #c5c5c5;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-flow: row wrap;
+  background-color: #ffffff;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.input-search {
+  width: 16rem;
+  padding: 0.5rem;
+  outline: 0.1rem solid transparent;
+  border: none;
+}
+
+.bi-search::before {
+  content: "\f52a";
+}
+.to-follow-list {
+  background-color: #ffffff;
+}
+
+.who-follow {
+  border-bottom: 1px solid #c5c5c5;
+  padding: 0.5rem;
+  text-align: left;
+  font-weight: 700;
+}
+
+.each-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.users-profile-pic {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: #9a9a9a;
+  border-radius: 50%;
+}
+
+.users-detail {
+  display: flex;
+  flex-flow: column wrap;
+  text-decoration: none;
+}
+
+.users-name {
+  font-weight: 700;
+}
+
+.users-username {
+  color: #9a9a9a;
+  font-weight: 300;
+}
+
+.nav-link {
+  text-decoration: none;
+}
