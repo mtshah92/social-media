@@ -209,8 +209,11 @@ export const PostProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(eventHandler, initialState);
-  useEffect(() => posts, []);
+  useEffect(() => {
+    posts();
+  }, []);
   // console.log(state.bookmarkPost);
+  console.log(state);
   return (
     <PostContext.Provider
       value={{

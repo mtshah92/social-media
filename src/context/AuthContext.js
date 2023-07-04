@@ -141,7 +141,9 @@ export const AuthProvider = ({ children }) => {
 
   const [authData, dispatch] = useReducer(authDatahaandler, initialState);
 
-  useEffect(() => getUsers, []);
+  useEffect(() => {
+    getUsers();
+  }, []);
   console.log(authData.currentUser);
 
   return (
