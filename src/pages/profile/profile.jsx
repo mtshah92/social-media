@@ -26,6 +26,7 @@ export const Profile = () => {
     username,
     profile_pic,
     cover_pic,
+    protfolio_link,
     following,
     followers,
     bookmarks,
@@ -55,10 +56,13 @@ export const Profile = () => {
               profileImage={profile_pic}
               auth={token}
               bio={bio}
+              protfolio_url={protfolio_link}
             />
           )}
           <p className="bio"> {bio}</p>
-          <p className="protfolio-link">mshah.com</p>
+          <a className="protfolio-link" href={protfolio_link} target="_blank">
+            {protfolio_link}
+          </a>
           <div className="follow-following-details">
             <div className="following-details">
               <p className="following-count">{following.length}</p>

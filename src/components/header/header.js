@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const { setFoundUser, foundUser } = useContext(AuthContext);
+  const { setFoundUser, foundUser, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
     <div className="header">
@@ -15,11 +15,7 @@ export const Header = () => {
       <i
         class="bi bi-box-arrow-right"
         onClick={() => {
-          setFoundUser(null);
-          localStorage.removeItem("encodedToken");
-          localStorage.removeItem("user");
-
-          !foundUser && navigate("/login");
+          logOut();
         }}
       ></i>
     </div>

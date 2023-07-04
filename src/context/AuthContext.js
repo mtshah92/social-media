@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { createContext, useReducer, useState } from "react";
 import { act } from "react-dom/test-utils";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -10,6 +11,8 @@ export const AuthProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user"))
   );
   // JSON.parse(localStorage.getItem("user"))
+
+  const navigate = useNavigate();
 
   const [errorCode, setErrorCode] = useState();
   const initialState = {
@@ -56,6 +59,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(response?.data?.foundUser));
       setFoundUser(response?.data?.foundUser);
       dispatch({ type: "postLogin", payload: response.data });
+      navigate("/home");
       // console.log(response);
     } catch (e) {
       setErrorCode(...e.response?.data?.errors);
@@ -77,6 +81,13 @@ export const AuthProvider = ({ children }) => {
       console.error(e);
     }
   };
+
+  const logOut = () => {
+    setFoundUser(null);
+    localStorage.removeItem("encodedToken");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
   const getUsers = async () => {
     try {
       const response = await axios.get("/api/users/");
@@ -87,12 +98,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const editUser = async (encodedToken, img, updatedBio) => {
-    // console.log(encodedToken, img);
+  const editUser = async (encodedToken, img, updatedBio, updatedProtfolio) => {
+    console.log(encodedToken, img, updatedBio, updatedProtfolio);
     try {
       const response = await axios.post(
         "/api/users/edit",
-        { userData: { profile_pic: img, bio: updatedBio } },
+        {
+          userData: {
+            profile_pic: img,
+            bio: updatedBio,
+            protfolio_link: updatedProtfolio,
+          },
+        },
         { headers: { authorization: encodedToken } }
       );
       setFoundUser(response.data.user);
@@ -159,6 +176,7 @@ export const AuthProvider = ({ children }) => {
         authData,
         followUser,
         unfollowUser,
+        logOut,
       }}
     >
       {children}

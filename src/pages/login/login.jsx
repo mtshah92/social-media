@@ -73,7 +73,6 @@ export const Login = () => {
             className="guest-mode-btn"
             onClick={() => {
               postLoginData("adarshbalika", "adarshBalika123");
-              foundUser && navigate("/home");
             }}
           >
             Guest Mode
