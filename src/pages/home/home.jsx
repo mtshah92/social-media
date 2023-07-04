@@ -54,6 +54,7 @@ export const Home = () => {
   };
 
   const filterData = getfilteredData(currentFilter);
+  console.log(filterData);
 
   return (
     <div className="home">
