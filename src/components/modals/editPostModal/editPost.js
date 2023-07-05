@@ -25,7 +25,7 @@ export const EditPostModal = ({
       </div>
       <div className="editPost-context">
         <textarea
-          className="createPost-textarea"
+          className="editPost-textarea"
           onChange={(e) => setEditPostData(e.target.value)}
         >
           {content}

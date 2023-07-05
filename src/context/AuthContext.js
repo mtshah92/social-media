@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [foundUser, setFoundUser] = useState();
+  const [foundUser, setFoundUser] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
   // JSON.parse(localStorage.getItem("user"))
 
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   const initialState = {
     allUsers: [],
     currentUser: [],
+    otherUser: [],
   };
 
   const authDatahaandler = (authData, action) => {
@@ -42,6 +45,12 @@ export const AuthProvider = ({ children }) => {
         return {
           ...authData,
           currentUser: action.payload,
+        };
+      }
+      case "eachUser": {
+        return {
+          ...authData,
+          otherUser: action.payload,
         };
       }
       default:
@@ -82,6 +91,15 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const getEachUser = async (id) => {
+    try {
+      const response = await axios.get(`/api/users/${id}`);
+      dispatch({ type: "eachUser", payload: response.data.user });
+      // console.log(response.data.user);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const logOut = () => {
     setFoundUser(null);
     localStorage.removeItem("encodedToken");
@@ -161,13 +179,14 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     getUsers();
   }, []);
-  console.log(authData.allUsers);
+  console.log(authData.otherUser);
 
   return (
     <AuthContext.Provider
       value={{
         postLoginData,
         foundUser,
+        getEachUser,
         setFoundUser,
         editUser,
         errorCode,

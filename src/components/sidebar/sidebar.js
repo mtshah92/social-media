@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
 export const SideBar = () => {
-  const { authData, foundUser, followUser, unfollowUser } =
+  const { authData, foundUser, followUser, unfollowUser, getEachUser } =
     useContext(AuthContext);
 
   const [searchUser, setSearchUser] = useState();
@@ -57,7 +57,11 @@ export const SideBar = () => {
               <div className="each-user">
                 <img className="users-profile-pic" src={profile_pic} />
                 <div className="users-details">
-                  <NavLink className="nav-link">
+                  <NavLink
+                    className="nav-link"
+                    to={`/user/${_id}`}
+                    onClick={() => getEachUser(_id)}
+                  >
                     <div className="users-name">
                       {firstName + "  " + lastName}
                     </div>
@@ -69,11 +73,6 @@ export const SideBar = () => {
                     {followers.find((data) => data._id === foundUser?._id) ? (
                       <button onClick={() => unfollowUser(_id, token)}>
                         Followed
-                        {/* Follow{" "}
-                        <i
-                          class="bi bi-plus-lg"
-                          onClick={() => followUser(_id, token)}
-                        ></i> */}
                       </button>
                     ) : (
                       <button onClick={() => followUser(_id, token)}>

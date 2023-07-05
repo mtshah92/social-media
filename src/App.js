@@ -9,6 +9,7 @@ import { Signup } from "./pages/signup/signup";
 import { LandingPage } from "./pages/landing/landing";
 import { Bookmark } from "./pages/bookmark/bookmark";
 import { Profile } from "./pages/profile/profile";
+import { OtherUserProfile } from "./pages/otherUserProfile/otherUserProfile";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/user/:userId"
+          element={
+            <RequireAuth>
+              <OtherUserProfile />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/home"
           element={
