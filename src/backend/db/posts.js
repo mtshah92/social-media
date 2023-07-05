@@ -9,9 +9,10 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
-    content: "Santorini in Greece",
-    content_img:
-      "https://i.pinimg.com/564x/e1/99/b2/e199b25cd826924f861cf8762eee449c.jpg",
+    content:
+      "Paradise awaits! Just landed in the breathtaking Maldives, and I'm already in awe of the crystal-clear waters and soft sandy beaches.",
+    // content_img:
+    //   "https://i.pinimg.com/564x/e1/99/b2/e199b25cd826924f861cf8762eee449c.jpg",
     likes: {
       likeCount: 2,
       likedBy: [],
@@ -27,9 +28,10 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "even if u dont believe in god, this earth, still is gorgeous",
-    content_img:
-      "https://i.pinimg.com/564x/73/cc/88/73cc88738ddb353a08738f6b586e2359.jpg",
+    content:
+      "Exploring the golden dunes of the Sahara Desert on a camel's back! The tranquility and vastness of this desert are truly humbling. Magical sunset views! ",
+    // content_img:
+    //   "https://i.pinimg.com/564x/73/cc/88/73cc88738ddb353a08738f6b586e2359.jpg",
     likes: {
       likeCount: 3,
       likedBy: [],
@@ -45,9 +47,9 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "Let’s unlock the garden gate and enter the splendor of these gardens. ",
-    content_img:
-      "https://i.pinimg.com/564x/a8/e6/68/a8e66845ec638cbdafeb3e87d4f46fe8.jpg",
+      " Embracing nature's beauty in the Canadian Rockies. Hiking through the vibrant fall foliage and gazing at the turquoise lakes is an experience like no other",
+    // content_img:
+    //   "https://i.pinimg.com/564x/a8/e6/68/a8e66845ec638cbdafeb3e87d4f46fe8.jpg",
     likes: {
       likeCount: 3,
       likedBy: [],
@@ -63,9 +65,10 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "Beautiful destination to stare at for hours ",
-    content_img:
-      "https://i.pinimg.com/564x/da/c4/fa/dac4fad4810e7d038cccd0d3f974b389.jpg",
+    content:
+      "Journeying through the cultural wonders of India. The Taj Mahal's beauty is beyond words, and the colorful festivals are a sensory explosion! ",
+    // content_img:
+    //   "https://i.pinimg.com/564x/da/c4/fa/dac4fad4810e7d038cccd0d3f974b389.jpg",
     likes: {
       likeCount: 3,
       likedBy: [],
@@ -80,9 +83,10 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "The best dreams happen when you’re awake ",
-    content_img:
-      "https://i.pinimg.com/564x/1c/91/07/1c9107056d27d0adf9b2cee6816b6e1a.jpg",
+    content:
+      "Sailing through the stunning Greek Islands. Each island has its own unique charm and history, making it an unforgettable island-hopping adventure! ",
+    // content_img:
+    //   "https://i.pinimg.com/564x/1c/91/07/1c9107056d27d0adf9b2cee6816b6e1a.jpg",
     likes: {
       likeCount: 3,
       likedBy: [],

@@ -1,0 +1,29 @@
+.bookmark-page {
+  display: grid;
+  height: max-content;
+  background-color: #f7f7f7;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "header header header"
+    "navbar bookmark sidebar"
+    "navbar bookmark sidebar"
+    "navbar bookmark sidebar";
+}
+
+.bookmark-main-content {
+  grid-area: bookmark;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* justify-content: center; */
+  margin-top: 1rem;
+}
+
+.bookmark-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookmark-post-content {
+  text-align: left;
+}

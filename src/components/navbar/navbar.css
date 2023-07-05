@@ -19,16 +19,16 @@
   font-weight: 500;
 }
 
-.bi-house::before {
+/* .bi-house::before {
   content: "\f425";
-}
+} */
 
-.bi-rocket::before {
+/* .bi-rocket::before {
   content: "\f846";
-}
-.bi-bookamrk::before {
+} */
+/* .bi-bookamrk::before {
   content: "\f1a2";
-}
+} */
 
 .bi-person:before {
   content: "\f4e1";

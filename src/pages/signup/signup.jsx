@@ -22,85 +22,87 @@ export const Signup = () => {
     <div className="signup">
       <h1>Sign-Up</h1>
       <div>
-        <label for="email-signup">
-          Email: <input id="email-signup" placeholder="email" />
-        </label>
-      </div>
+        <div>
+          <label for="email-signup">
+            Email: <input id="email-signup" placeholder="email" />
+          </label>
+        </div>
 
-      <div>
-        <label for="first-name">
-          First Name:{" "}
-          <input
-            id="first-name"
-            placeholder="First Name"
-            onChange={(e) =>
-              setNewUser({ ...newUser, firstName: e.target.value })
-            }
-          />
-        </label>
-      </div>
+        <div>
+          <label for="first-name">
+            First Name:{" "}
+            <input
+              id="first-name"
+              placeholder="First Name"
+              onChange={(e) =>
+                setNewUser({ ...newUser, firstName: e.target.value })
+              }
+            />
+          </label>
+        </div>
 
-      <div>
-        <label for="last-name">
-          Last Name:{" "}
-          <input
-            id="last-name"
-            placeholder="Last Name"
-            onChange={(e) =>
-              setNewUser({ ...newUser, lastName: e.target.value })
-            }
-          />
-        </label>
-      </div>
+        <div>
+          <label for="last-name">
+            Last Name:{" "}
+            <input
+              id="last-name"
+              placeholder="Last Name"
+              onChange={(e) =>
+                setNewUser({ ...newUser, lastName: e.target.value })
+              }
+            />
+          </label>
+        </div>
 
-      <div>
-        <label for="username">
-          Username:{" "}
-          <input
-            id="username"
-            placeholder="Username"
-            onChange={(e) =>
-              setNewUser({ ...newUser, username: e.target.value })
-            }
-          />
-        </label>
-      </div>
+        <div>
+          <label for="username">
+            Username:{" "}
+            <input
+              id="username"
+              placeholder="Username"
+              onChange={(e) =>
+                setNewUser({ ...newUser, username: e.target.value })
+              }
+            />
+          </label>
+        </div>
 
-      <div>
-        <label for="password">
-          Password:{" "}
-          <input
-            id="password"
-            placeholder="password"
-            onChange={(e) =>
-              setNewUser({ ...newUser, password: e.target.value })
-            }
-          />
-        </label>
-      </div>
+        <div>
+          <label for="password">
+            Password:{" "}
+            <input
+              id="password"
+              placeholder="password"
+              onChange={(e) =>
+                setNewUser({ ...newUser, password: e.target.value })
+              }
+            />
+          </label>
+        </div>
 
-      <div>
-        <label for="confirm-password">
-          Confirm Password:{" "}
-          <input
-            id="confirm-password"
-            placeholder="Confirm password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </label>
-      </div>
+        <div>
+          <label for="confirm-password">
+            Confirm Password:{" "}
+            <input
+              id="confirm-password"
+              placeholder="Confirm password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </label>
+        </div>
 
-      <div>
-        <button
-          onClick={() => {
-            signupData(newUser);
-            // encodedToken && navigate("/home");
-          }}
-          disabled={newUser.password !== confirmPassword}
-        >
-          submit
-          {/* {token ? navigate("/home") : <p>Submit</p>} */}
-        </button>
+        <div>
+          <button
+            onClick={() => {
+              signupData(newUser);
+              // encodedToken && navigate("/home");
+            }}
+            disabled={newUser.password !== confirmPassword}
+          >
+            submit
+            {/* {token ? navigate("/home") : <p>Submit</p>} */}
+          </button>
+        </div>
       </div>
     </div>
   );

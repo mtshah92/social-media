@@ -18,12 +18,12 @@ export const Navbar = () => {
               &nbsp; Home
             </NavLink>
           </div>
-          <div>
+          {/* <div>
             <NavLink to="/explore" className="nav-items explore">
               <i class="bi bi-rocket"></i>
               &nbsp; Explore
             </NavLink>
-          </div>
+          </div> */}
           <div>
             <NavLink to="/bookmarks" className="nav-items bookmark">
               <i class="bi bi-bookmark"></i>

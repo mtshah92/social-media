@@ -10,8 +10,20 @@ import { EditProfileModal } from "../../components/modals/editProfileModal/editP
 
 export const Profile = () => {
   const { getUsers, authData, foundUser } = useContext(AuthContext);
-  const { state, showEditProfileModal, setEditProfileModal } =
-    useContext(PostContext);
+  const {
+    state,
+    showEditProfileModal,
+    setEditProfileModal,
+    likePost,
+    disLikePost,
+    deletePost,
+    bookmarkPost,
+    removeBookmark,
+    getBookmarks,
+    showPostModal,
+    showEditModal,
+    setEditModal,
+  } = useContext(PostContext);
   console.log(foundUser);
   const token = localStorage.getItem("encodedToken");
   // useEffect(() => getUsers, []);
@@ -82,7 +94,10 @@ export const Profile = () => {
 
         <div className="user-own-post">
           {userPosts.map((item) => {
-            const { content, username, likes, content_img } = item;
+            const { content, username, likes, content_img, _id } = item;
+            const islikedbyMe = likes?.likedBy?.find(
+              (item) => item.username === foundUser.username
+            );
             return (
               <div className="each-user-post">
                 <img className="user-post-profile-image" src={profile_pic} />
@@ -98,16 +113,53 @@ export const Profile = () => {
                     <p>...</p>
                   </div>
                   <p className="user-post-data">
-                    <div>
+                    {/* <div>
                       <img src={content_img} width="400" height="280" />
-                    </div>
+                    </div> */}
                     {content}
                   </p>
-                  <div className="user-post-action-section">
+                  <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
+                    <div>
+                      {" "}
+                      <div
+                        onClick={() => {
+                          if (islikedbyMe) {
+                            disLikePost(_id, token);
+                          } else {
+                            likePost(_id, token);
+                          }
+                        }}
+                      >
+                        {islikedbyMe ? (
+                          <i class="bi bi-suit-heart-fill red-clr like-btn"></i>
+                        ) : (
+                          <i class="bi bi-heart like-btn"></i>
+                        )}{" "}
+                        {likes?.likeCount}
+                      </div>{" "}
+                    </div>
+
+                    <div>
+                      {state.bookmarkPost.find((item) => item._id === _id) ? (
+                        <i
+                          className="bi bi-bookmark-fill bookmark-with-fill"
+                          onClick={() => removeBookmark(_id, token)}
+                        ></i>
+                      ) : (
+                        <i
+                          class="bi bi-bookmark bookmark-btn"
+                          onClick={() => bookmarkPost(_id, token)}
+                        ></i>
+                      )}
+                    </div>
+
+                    <i className="bi bi-share share-btn"></i>
+                  </div>
+                  {/* <div className="user-post-action-section">
                     <i class="bi bi-heart">{likes.likeCount}</i>
                     <i class="bi bi-chat-left"></i>
                     <i class="bi bi-bookmark"></i>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             );

@@ -63,18 +63,18 @@ export const Home = () => {
       {showPostModal && <NewPostModal />}
 
       <div className="home-content mt-xl">
-        <div className="createPost white-bg mr-xxl p-xs mt-s">
+        <div className="createPost white-bg mr-xxl p-xs">
           <div className="flex flex-row nowrap p-xs">
             <div class="w-full">
               <textarea
-                className="w-full lynx-white-bg p-s outline-transparent border-none"
+                className="w-full resize lynx-white-bg p-s outline-transparent border-none"
                 placeholder="Write something interesting..."
                 onChange={(e) => setNewPost(e.target.value)}
               />
-              <div className="flex flex-space-between pt-s">
+              <div className="postbtn flex  pt-s">
                 <div className="flex flex-gap">
                   <button
-                    className="post-btn primary-bg p-l pt-xs pb-xs secondary-color border-none outline-transparent"
+                    className="post-btn primary-bg secondary-color border-none outline-transparent"
                     onClick={() => createPost(newPost, token)}
                   >
                     Post
@@ -85,15 +85,14 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="filter flex flex-space-between mr-xxl flex-align-center pt-s">
+        <div className="filter flex flex-space-between mr-xxl flex-align-center pt-s bg-clr">
           <h3>Latest Posts</h3>
           <div className="dropdown">
-            <button
-              className="drop-btn"
+            <i
+              class="bi bi-funnel-fill drop-btn"
               onClick={() => setShowFilter((showFilter) => !showFilter)}
-            >
-              Filters
-            </button>
+            ></i>
+
             <div
               id={showFilter && "dropdown-menu"}
               className="dropdown-content"
@@ -137,7 +136,7 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <div className="white-bg mr-xxl p-xs mt-s">
+        <div className="mr-xxl p-xs mt-s">
           <div className="flex flex-row nowrap p-xs">
             <ul>
               {filterData.map((item) => {
@@ -191,7 +190,7 @@ export const Home = () => {
                                   setShowEdit((showEdit) => !showEdit)
                                 }
                               >
-                                edit
+                                <i class="bi bi-three-dots"></i>
                               </div>
                               <div
                                 id={showEdit && "dropdown-menu"}
@@ -201,12 +200,18 @@ export const Home = () => {
                                   className="dropdown-items"
                                   onClick={() => {
                                     deletePost(_id, token);
-                                    setShowEdit((showEdit) => !showEdit);
+                                    setShowEdit(false);
                                   }}
                                 >
                                   Delete
                                 </div>
-                                <div onClick={() => setEditModal(true)}>
+                                <div
+                                  className="dropdown-items"
+                                  onClick={() => {
+                                    setEditModal(true);
+                                    setShowEdit(false);
+                                  }}
+                                >
                                   Edit
                                 </div>
                               </div>
@@ -237,9 +242,9 @@ export const Home = () => {
                               }}
                             >
                               {islikedbyMe ? (
-                                <i class="bi bi-suit-heart-fill red-clr"></i>
+                                <i class="bi bi-suit-heart-fill red-clr like-btn"></i>
                               ) : (
-                                <i class="bi bi-heart"></i>
+                                <i class="bi bi-heart like-btn"></i>
                               )}{" "}
                               {likes?.likeCount}
                             </div>{" "}
@@ -250,18 +255,18 @@ export const Home = () => {
                               (item) => item._id === _id
                             ) ? (
                               <i
-                                class="bi bi-bookmark-fill"
+                                className="bi bi-bookmark-fill bookmark-with-fill"
                                 onClick={() => removeBookmark(_id, token)}
                               ></i>
                             ) : (
                               <i
-                                class="bi bi-bookmark"
+                                class="bi bi-bookmark bookmark-btn"
                                 onClick={() => bookmarkPost(_id, token)}
                               ></i>
                             )}
                           </div>
 
-                          <i class="bi bi-share"></i>
+                          <i className="bi bi-share share-btn"></i>
                         </div>
                       </div>
                     </div>
