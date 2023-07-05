@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [foundUser, setFoundUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
-  );
+  const [foundUser, setFoundUser] = useState();
   // JSON.parse(localStorage.getItem("user"))
 
   const navigate = useNavigate();
@@ -19,6 +17,7 @@ export const AuthProvider = ({ children }) => {
     allUsers: [],
     currentUser: [],
   };
+
   const authDatahaandler = (authData, action) => {
     switch (action.type) {
       case "postLogin": {
@@ -60,7 +59,7 @@ export const AuthProvider = ({ children }) => {
       setFoundUser(response?.data?.foundUser);
       dispatch({ type: "postLogin", payload: response.data });
       navigate("/home");
-      // console.log(response);
+      console.log(response?.data?.foundUser);
     } catch (e) {
       setErrorCode(...e.response?.data?.errors);
     }
@@ -77,6 +76,7 @@ export const AuthProvider = ({ children }) => {
         type: "signup",
         payload: response.data.createdUser,
       });
+      navigate("/home");
     } catch (e) {
       console.error(e);
     }
@@ -161,7 +161,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     getUsers();
   }, []);
-  console.log(authData.currentUser);
+  console.log(authData.allUsers);
 
   return (
     <AuthContext.Provider

@@ -59,9 +59,8 @@ export const Login = () => {
                 loginCredentials.username,
                 loginCredentials.password
               );
-              console.log(authData.currentUser);
+              // console.log(authData.currentUser);
               // authData.currentUser && navigate("/home");
-              foundUser && navigate("/home");
             }}
           >
             Log In
@@ -72,15 +71,19 @@ export const Login = () => {
           <button
             className="guest-mode-btn"
             onClick={() => {
+              setLoginCredentials({
+                username: "adarshbalika",
+                password: "adarshBalika123",
+              });
               postLoginData("adarshbalika", "adarshBalika123");
             }}
           >
             Guest Mode
           </button>
         </div>
-        <div>
+        {/* <div>
           Don't Have a Account <NavLink to="/signup">Signup Here</NavLink>{" "}
-        </div>
+        </div> */}
         {/* {errorCode && toast.error(errorCode)} */}
       </div>
     </div>
