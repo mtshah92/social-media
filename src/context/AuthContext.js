@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
   const [foundUser, setFoundUser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-  // JSON.parse(localStorage.getItem("user"))
 
   const navigate = useNavigate();
 

@@ -6,7 +6,7 @@
   transform: translate(-50%, -50%);
   border: 1px solid;
   display: flex;
-  background-color: #45cfdd;
+  background-color: #8294c4;
   border-radius: 0.5rem;
 }
 
@@ -26,7 +26,7 @@
   resize: none;
   margin-top: 0;
   border: none;
-  background-color: #45cfdd;
+  background-color: #8294c4;
 }
 
 .edit-btn {
@@ -36,5 +36,15 @@
 }
 
 .save-btn {
-  margin-right: 0.5rem;
+  margin-right: 1rem;
+}
+
+.save-btn,
+.close-btn {
+  background-color: #2979ff;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }

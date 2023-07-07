@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { Header } from "../../components/header/header";
@@ -7,6 +7,8 @@ import { SideBar } from "../../components/sidebar/sidebar";
 import "./profile.css";
 import { PostContext } from "../../context/PostContext";
 import { EditProfileModal } from "../../components/modals/editProfileModal/editProfile";
+import { NewPostModal } from "../../components/modals/newPostModal/newPost";
+import { EditPostModal } from "../../components/modals/editPostModal/editPost";
 
 export const Profile = () => {
   const { getUsers, authData, foundUser } = useContext(AuthContext);
@@ -26,6 +28,8 @@ export const Profile = () => {
   } = useContext(PostContext);
   console.log(foundUser);
   const token = localStorage.getItem("encodedToken");
+
+  const [showEdit, setShowEdit] = useState(false);
   // useEffect(() => getUsers, []);
   // console.log(authData);
   // const currentUserData = JSON.parse(localStorage.getItem("user"));
@@ -52,6 +56,7 @@ export const Profile = () => {
     <div className="profile-page">
       <Header />
       <Navbar />
+      {showPostModal && <NewPostModal />}
       <div className="profile-content">
         <div className="user-content">
           <img className="user-profile-image" src={profile_pic} />
@@ -110,7 +115,55 @@ export const Profile = () => {
                       </p>
                       <p className="user-post-username">@{username}</p>
                     </div>
-                    <p>...</p>
+
+                    {/* {currentUser === username && ( */}
+                    <div>
+                      {" "}
+                      {showEditModal && (
+                        <EditPostModal
+                          img={content_img}
+                          content={content}
+                          profile_pic={profile_pic}
+                          postId={_id}
+                          authorization={token}
+                        />
+                      )}
+                    </div>
+                    {/* )} */}
+
+                    {/* {currentUser === username && ( */}
+                    <div className="dropdown">
+                      <div
+                        className="drop-btn"
+                        onClick={() => setShowEdit((showEdit) => !showEdit)}
+                      >
+                        <i class="bi bi-three-dots"></i>
+                      </div>
+                      <div
+                        id={showEdit && "dropdown-menu"}
+                        className="dropdown-content"
+                      >
+                        <div
+                          className="dropdown-items"
+                          onClick={() => {
+                            deletePost(_id, token);
+                            setShowEdit(false);
+                          }}
+                        >
+                          Delete
+                        </div>
+                        <div
+                          className="dropdown-items"
+                          onClick={() => {
+                            setEditModal(true);
+                            setShowEdit(false);
+                          }}
+                        >
+                          Edit
+                        </div>
+                      </div>
+                    </div>
+                    {/* )} */}
                   </div>
                   <p className="user-post-data">
                     {/* <div>
