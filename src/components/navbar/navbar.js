@@ -12,26 +12,25 @@ export const Navbar = () => {
     <div className="navbar-area">
       <div className="navbar-content">
         <div className="nav-links">
-          <div>
-            <NavLink to="/home" className="nav-items home">
-              <i class="bi bi-house"></i>
-              &nbsp; Home
+          <div id="home">
+            <NavLink to="/home" className="nav-items nav-home">
+              <i class="bi bi-house"></i> &nbsp;Home
             </NavLink>
           </div>
-          {/* <div>
-            <NavLink to="/explore" className="nav-items explore">
-              <i class="bi bi-rocket"></i>
+          <div id="explore">
+            <NavLink to="/explore-feed" className="nav-items nav-explore">
+              <i class="bi bi-compass"></i>
               &nbsp; Explore
             </NavLink>
-          </div> */}
-          <div>
-            <NavLink to="/bookmarks" className="nav-items bookmark">
+          </div>
+          <div id="bookmark">
+            <NavLink to="/bookmarks" className="nav-items nav-bookmark">
               <i class="bi bi-bookmark"></i>
               &nbsp; Bookmark
             </NavLink>
           </div>
-          <div>
-            <NavLink to="/profile" className="nav-items profile">
+          <div id="profile">
+            <NavLink to="/profile" className="nav-items nav-profile">
               <i class="bi bi-person"></i>
               &nbsp; Profile
             </NavLink>

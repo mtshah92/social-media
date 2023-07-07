@@ -13,25 +13,27 @@
   height: 80vh;
   /* border: 1px solid; */
 }
-.nav-items {
+.nav-links .nav-items {
   text-decoration: none;
   color: black;
   font-weight: 500;
 }
+#home {
+  padding-bottom: 0.5rem;
+}
+#explore {
+  padding-bottom: 0.5rem;
+}
 
-/* .bi-house::before {
-  content: "\f425";
-} */
+#bookmark {
+  padding-bottom: 0.5rem;
+}
 
-/* .bi-rocket::before {
-  content: "\f846";
-} */
-/* .bi-bookamrk::before {
-  content: "\f1a2";
-} */
-
-.bi-person:before {
-  content: "\f4e1";
+.nav-home:hover,
+.nav-explore:hover,
+.nav-bookmark:hover,
+.nav-profile:hover {
+  font-weight: 700;
 }
 
 .create-post-btn {

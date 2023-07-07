@@ -10,6 +10,7 @@ import { LandingPage } from "./pages/landing/landing";
 import { Bookmark } from "./pages/bookmark/bookmark";
 import { Profile } from "./pages/profile/profile";
 import { OtherUserProfile } from "./pages/otherUserProfile/otherUserProfile";
+import { ExploreFeed } from "./pages/exploreFeed/exploreFeed";
 
 function App() {
   return (
@@ -57,6 +58,15 @@ function App() {
           element={
             <RequireAuth>
               <Profile />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/explore-feed"
+          element={
+            <RequireAuth>
+              <ExploreFeed />
             </RequireAuth>
           }
         />
