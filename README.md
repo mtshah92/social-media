@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# MeBook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MeBook - A social media website where you can connect with your friends.
 
 ## Available Scripts
 
