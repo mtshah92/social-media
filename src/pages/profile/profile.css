@@ -1,7 +1,6 @@
 .profile-page {
   display: grid;
-  height: max-content;
-
+  height: 100vh;
   background-color: #f7f7f7;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas:

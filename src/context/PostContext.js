@@ -220,7 +220,7 @@ export const PostProvider = ({ children }) => {
     posts();
   }, []);
   // console.log(state.bookmarkPost);
-  console.log(state);
+  // console.log(state);
   return (
     <PostContext.Provider
       value={{

@@ -5,7 +5,7 @@ import { useState } from "react";
 import "./newPost.css";
 
 export const NewPostModal = () => {
-  const { authData } = useContext(AuthContext);
+  const { authData, foundUser } = useContext(AuthContext);
   const { createPost, setPostModal } = useContext(PostContext);
 
   const [newPost, setNewPost] = useState();
@@ -16,7 +16,7 @@ export const NewPostModal = () => {
     <div className="newPost-modal">
       <div>
         <img
-          src={authData?.currentUser?.foundUser?.profile_pic}
+          src={foundUser.profile_pic}
           height="50"
           width="50"
           className="user-profile-pic"

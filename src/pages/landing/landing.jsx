@@ -22,15 +22,15 @@ export const LandingPage = () => {
             </p>
           </div>
           <div>
-            <button className="join-button" onClick={() => navigate("/login")}>
-              Login
+            <button className="join-button" onClick={() => navigate("/signup")}>
+              Join Now
             </button>
           </div>
-          {/* <div className="already-account-container">
+          <div className="already-account-container">
             <NavLink to="/login" className="already-account-link">
               Already have an account?
             </NavLink>
-          </div> */}
+          </div>
         </div>
       </div>
 

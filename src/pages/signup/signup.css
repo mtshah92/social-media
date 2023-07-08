@@ -1,14 +1,15 @@
-.login-page {
+.signup-page {
   display: flex;
   background-color: #f7f7f7;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  justify-content: space-around;
   height: 100vh;
-  font-size: 18px;
+  font-size: 16px;
+  text-align: center;
 }
-.login-card {
+
+.signup-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,4 +22,18 @@
   width: 20rem;
   border-radius: 1rem;
   border: none;
+  margin-bottom: 1rem;
+}
+
+.signup-title {
+  margin-bottom: 1rem;
+}
+
+.signup-items {
+  margin: 0.25rem;
+}
+.signup-submit {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
 }

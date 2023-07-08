@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
+import { NavLink } from "react-router-dom";
 
 export const Login = () => {
   const { postLoginData } = useContext(AuthContext);
@@ -93,10 +94,13 @@ export const Login = () => {
             Guest Mode
           </button>
         </div>
-        {/* <div>
-          Don't Have a Account <NavLink to="/signup">Signup Here</NavLink>{" "}
-        </div> */}
-        {/* {errorCode && toast.error(errorCode)} */}
+        <div>
+          Don't Have a Account
+          <div className="go-to-signup">
+            {" "}
+            <NavLink to="/signup">Signup Here</NavLink>{" "}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export const SideBar = () => {
     useContext(AuthContext);
 
   const [searchUser, setSearchUser] = useState();
-  // console.log(foundUser);
+  console.log(foundUser);
   const usersToFollow = authData?.allUsers?.filter(
     (item) => item._id !== foundUser?._id
   );

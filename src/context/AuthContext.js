@@ -7,9 +7,8 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [foundUser, setFoundUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
-  );
+  const [foundUser, setFoundUser] = useState();
+  // JSON.parse(localStorage.getItem("user"))
 
   const navigate = useNavigate();
 
@@ -86,11 +85,11 @@ export const AuthProvider = ({ children }) => {
 
   const signupData = async (data) => {
     try {
-      const response = await axios.post("/api/auth/signup", { postData: data });
-      console.log(response);
+      const response = await axios.post("/api/auth/signup", data);
+      // console.log(response.data.createdUser);
       localStorage.setItem("encodedToken", response?.data?.encodedToken);
-      localStorage.setItem("user", JSON.stringify(response?.data?.foundUser));
-      setFoundUser(response?.data?.foundUser);
+      localStorage.setItem("user", JSON.stringify(response?.data?.createdUser));
+      setFoundUser(response?.data?.createdUser);
       dispatch({
         type: "signup",
         payload: response.data.createdUser,
@@ -98,7 +97,8 @@ export const AuthProvider = ({ children }) => {
       navigate("/home");
       toast.success("Sign-in Successful");
     } catch (e) {
-      console.error(e);
+      toast.error(...e.response.data.errors);
+      // console.error(e.response.data.errors);
     }
   };
 
