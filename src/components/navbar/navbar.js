@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -12,11 +12,11 @@ export const Navbar = () => {
     <div className="navbar-area">
       <div className="navbar-content">
         <div className="nav-links">
-          <div id="home">
-            <NavLink to="/home" className="nav-items nav-home">
-              <i class="bi bi-house"></i> &nbsp;Home
-            </NavLink>
-          </div>
+          {/* <div id="home"> */}
+          <Link to="/home" className="nav-items nav-home">
+            <i class="bi bi-house"></i> &nbsp;Home
+          </Link>
+          {/* </div> */}
           <div id="explore">
             <NavLink to="/explore-feed" className="nav-items nav-explore">
               <i class="bi bi-compass"></i>

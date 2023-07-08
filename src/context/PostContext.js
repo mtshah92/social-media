@@ -2,6 +2,7 @@ import axios from "axios";
 import { useDebugValue, useReducer, useState } from "react";
 import { useEffect } from "react";
 import { createContext } from "react";
+import { toast } from "react-toastify";
 
 export const PostContext = createContext();
 
@@ -112,8 +113,10 @@ export const PostProvider = ({ children }) => {
         { headers: { authorization } }
       );
       dispatch({ type: "createPost", payload: response.data.posts });
+      toast.success("Post Created");
     } catch (e) {
-      console.error(e);
+      toast.error(e);
+      // console.error(e);
     }
   };
 
@@ -126,9 +129,11 @@ export const PostProvider = ({ children }) => {
         { postData },
         { headers: { authorization: authorization } }
       );
+      toast.success("Post Edited");
       // console.log(response.data);
     } catch (e) {
-      console.error(e);
+      toast.error(e);
+      // console.error(e);
     }
   };
   const likePost = async (id, authorization) => {
@@ -164,8 +169,10 @@ export const PostProvider = ({ children }) => {
         headers: { authorization: authorization },
       });
       dispatch({ type: "deletePost", payload: response.data.posts });
+      toast.success("Post Deleted");
     } catch (e) {
-      console.error(e);
+      toast.error(e);
+      // console.error(e);
     }
   };
 

@@ -62,12 +62,12 @@ export const Home = () => {
       <Navbar />
       {showPostModal && <NewPostModal />}
 
-      <div className="home-content mt-xl">
+      <div className="home-content mt-xl mt-xxxl">
         <div className="createPost white-bg mr-xxl p-xs">
           <div className="flex flex-row nowrap p-xs">
             <div class="w-full">
               <textarea
-                className="w-full resize lynx-white-bg p-s outline-transparent border-none"
+                className="w-full resize lynx-white-bg p-s outline-transparent border-none "
                 placeholder="Write something interesting..."
                 onChange={(e) => setNewPost(e.target.value)}
               />

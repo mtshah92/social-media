@@ -1,25 +1,22 @@
 import { useContext, useState } from "react";
-import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
-import { NavLink, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import "./login.css";
 
 export const Login = () => {
-  const { postLoginData, foundUser, errorCode, authData } =
-    useContext(AuthContext);
+  const { postLoginData } = useContext(AuthContext);
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
     password: "",
   });
-
+  const [showPassword, setShowPassword] = useState(false);
+  console.log(showPassword);
   // console.log(errorCode);
-  const navigate = useNavigate();
+
   return (
     <div className="login-page">
       <h1>MeBook</h1>
       <div className="login-card">
         <h2 className="login-title">Login</h2>
-
         <div className="credentials-container">
           <div>
             <label for="username" className="username-label">
@@ -35,6 +32,7 @@ export const Login = () => {
                 username: e.target.value,
               })
             }
+            value={loginCredentials.username}
           />
 
           <div className="password-label">
@@ -42,6 +40,7 @@ export const Login = () => {
           </div>
           <input
             id="password"
+            type={showPassword ? "text" : "password"}
             placeholder="adarshBalika123"
             onChange={(e) =>
               setLoginCredentials({
@@ -49,7 +48,19 @@ export const Login = () => {
                 password: e.target.value,
               })
             }
+            value={loginCredentials.password}
           />
+          {!showPassword ? (
+            <i
+              class="bi bi-eye-slash-fill toggle-password"
+              onClick={() => setShowPassword(true)}
+            ></i>
+          ) : (
+            <i
+              class="bi bi-eye-fill toggle-password"
+              onClick={() => setShowPassword(false)}
+            ></i>
+          )}
         </div>
         <div>
           <button
@@ -59,6 +70,7 @@ export const Login = () => {
                 loginCredentials.username,
                 loginCredentials.password
               );
+
               // console.log(authData.currentUser);
               // authData.currentUser && navigate("/home");
             }}

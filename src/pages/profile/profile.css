@@ -1,6 +1,7 @@
 .profile-page {
   display: grid;
   height: max-content;
+
   background-color: #f7f7f7;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas:
@@ -12,6 +13,7 @@
 .profile-content {
   grid-area: main;
   padding: 0.5rem;
+  margin-top: 7rem;
 }
 
 .user-content {

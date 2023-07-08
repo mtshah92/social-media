@@ -10,13 +10,24 @@ export const SideBar = () => {
   const [searchUser, setSearchUser] = useState();
   // console.log(foundUser);
   const usersToFollow = authData?.allUsers?.filter(
-    (item) => item.username !== foundUser?.username
+    (item) => item._id !== foundUser?._id
   );
 
+  const userList = usersToFollow.filter(
+    (item) => !foundUser.following.find((val) => item._id === val._id)
+  );
+
+  console.log(userList);
+  // const userList = usersToFollow.filter(
+  //   (user) =>
+  //     !foundUser?.following?.find((item) => item.username === user.username)
+  // );
+
+  // console.log(userList);
   const token = localStorage.getItem("encodedToken");
 
   const getfilteredUser = (user) => {
-    let data = [...usersToFollow];
+    let data = [...userList];
 
     if (user) {
       return data.filter((item) =>
@@ -51,6 +62,7 @@ export const SideBar = () => {
               profile_pic,
               _id,
               followers,
+              following,
             } = item;
 
             return (

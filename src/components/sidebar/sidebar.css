@@ -3,7 +3,10 @@
   border: 1px solid;
   height: max-content;
   margin-top: 4rem;
-  margin-right: 4rem;
+  margin-right: 1.5rem;
+  position: fixed;
+  top: 4rem;
+  right: 0;
 }
 
 .search-bar {

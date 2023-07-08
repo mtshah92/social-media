@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { createContext, useReducer, useState } from "react";
-import { act } from "react-dom/test-utils";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const [errorCode, setErrorCode] = useState();
+  // const [errorCode, setErrorCode] = useState();
   const initialState = {
     allUsers: [],
     currentUser: [],
@@ -52,10 +52,18 @@ export const AuthProvider = ({ children }) => {
           otherUser: action.payload,
         };
       }
+
+      case "following": {
+        return {
+          ...authData,
+          currentUser: action.payload,
+        };
+      }
       default:
         return authData;
     }
   };
+
   const postLoginData = async (username, password) => {
     try {
       const response = await axios.post("/api/auth/login", {
@@ -67,9 +75,12 @@ export const AuthProvider = ({ children }) => {
       setFoundUser(response?.data?.foundUser);
       dispatch({ type: "postLogin", payload: response.data });
       navigate("/home");
-      console.log(response?.data?.foundUser);
+
+      toast.success("Login successful");
+      // console.log(response?.data?.foundUser);
     } catch (e) {
-      setErrorCode(...e.response?.data?.errors);
+      // setErrorCode(...e.response?.data?.errors);
+      toast.error(...e.response?.data?.errors);
     }
   };
 
@@ -85,6 +96,7 @@ export const AuthProvider = ({ children }) => {
         payload: response.data.createdUser,
       });
       navigate("/home");
+      toast.success("Sign-in Successful");
     } catch (e) {
       console.error(e);
     }
@@ -96,6 +108,7 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: "eachUser", payload: response.data.user });
       // console.log(response.data.user);
     } catch (e) {
+      toast.error(e);
       console.error(e);
     }
   };
@@ -104,6 +117,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("encodedToken");
     localStorage.removeItem("user");
     navigate("/login");
+    toast.success("Logged Out");
   };
   const getUsers = async () => {
     try {
@@ -130,8 +144,9 @@ export const AuthProvider = ({ children }) => {
         { headers: { authorization: encodedToken } }
       );
       setFoundUser(response.data.user);
+      toast.success("Edited User Details Successfully");
       // dispatch({ type: "editUserData", payload: response.data.user });
-      console.log(response.data);
+      // console.log(response.data);
     } catch (e) {
       console.error(e);
     }
@@ -148,6 +163,9 @@ export const AuthProvider = ({ children }) => {
           },
         }
       );
+      dispatch({ type: "following", payload: response.data.user });
+      setFoundUser(response.data.user);
+      toast.success("Followed User");
       getUsers();
       // console.log(response.data);
     } catch (e) {
@@ -167,7 +185,9 @@ export const AuthProvider = ({ children }) => {
         }
       );
       getUsers();
-      console.log(response.data);
+      setFoundUser(response.data.user);
+      toast.success("Unfollowed User");
+      // console.log(response.data);
     } catch (e) {
       console.error(e);
     }
@@ -178,7 +198,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     getUsers();
   }, []);
-  console.log(authData.otherUser);
+  // console.log(authData.allUsers);
 
   return (
     <AuthContext.Provider
@@ -188,7 +208,7 @@ export const AuthProvider = ({ children }) => {
         getEachUser,
         setFoundUser,
         editUser,
-        errorCode,
+
         signupData,
         getUsers,
         authData,

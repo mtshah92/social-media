@@ -4,6 +4,9 @@
   padding-left: 2.5rem;
   padding-top: 2rem;
   margin-left: 1rem;
+  position: fixed;
+  top: 4rem;
+  left: 0;
 }
 
 .navbar-content {
@@ -29,12 +32,21 @@
   padding-bottom: 0.5rem;
 }
 
-.nav-home:hover,
+/* .nav-home:focus,
+.nav-explore:focus,
+.nav-bookmark:focus,
+.nav-profile:focus {
+  font-weight: 700;
+} */
+.nav-items:focus {
+  font-weight: 700;
+}
+/* .nav-home:hover,
 .nav-explore:hover,
 .nav-bookmark:hover,
 .nav-profile:hover {
   font-weight: 700;
-}
+} */
 
 .create-post-btn {
   width: 12rem;
